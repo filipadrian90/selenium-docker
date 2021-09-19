@@ -1,0 +1,62 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:3.14
+  chrome:
+    image: selenium/node-chrome:3.14
+    shm_size: '1gb'
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  firefox:
+    image: selenium/node-firefox:3.14
+    shm_size: '1gb'
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  search-module-firefox:
+    image: adrianfilip/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=firefox
+      - HUB_HOST=hub
+      - MODULE=searchmodule.xml
+    volumes:
+      - ./tests-results/seach-result-firefox:/usr/share/udemy/test-output
+  search-module-chrome:
+    image: adrianfilip/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=searchmodule.xml
+    volumes:
+      - ./tests-results/seach-result-chrome:/usr/share/udemy/test-output
+  book-flight-module-chrome:
+    image: adrianfilip/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=book-flight-module.xml
+    volumes:
+      - ./tests-results/book-result-chrome:/usr/share/udemy/test-output
+  book-flight-module-firefox:
+    image: adrianfilip/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=firefox
+      - HUB_HOST=hub
+      - MODULE=book-flight-module.xml
+    volumes:
+      - ./tests-results/book-result-firefox:/usr/share/udemy/test-output
