@@ -22,18 +22,19 @@ pipeline {
                 bat "docker-compose up search-module-firefox book-flight-module-chrome"
             }
         }
-        stage('Stop Selenium Grid'){
-            steps{
-                bat "docker-compose down"
-            }
+//         stage('Push Image') {
+//             steps {
+// 			    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
+// 			        bat "docker login --username=${user} --password=${pass}"
+// 			        bat "docker push adrianfilip/selenium-docker:latest"
+// 			    }
+//             }
         }
-        stage('Push Image') {
-            steps {
-			    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
-			        bat "docker login --username=${user} --password=${pass}"
-			        bat "docker push adrianfilip/selenium-docker:latest"
-			    }
-            }
+    }
+    post{
+        always{
+            archiveArtifacts artifacts: 'test-results/**'
+            bat "docker-compose down"
         }
     }
 }
