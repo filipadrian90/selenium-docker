@@ -4,22 +4,22 @@ pipeline {
     stages {
         stage('Build Jar') {
             steps {
-                bat "mvn clean package -DskipTests"
+                sh "mvn clean package -DskipTests"
             }
         }
         stage('Build Image') {
             steps {
-                bat "docker build -t=\"adrianfilip/selenium-docker\" ."
+                sh "docker build -t=\"adrianfilip/selenium-docker\" ."
             }
         }
         stage('Start Selenium Grid'){
             steps{
-                bat "docker-compose up -d hub chrome firefox"
+                sh "docker-compose up -d hub chrome firefox"
             }
         }
         stage('Run Test'){
             steps{
-                bat "docker-compose up search-module-firefox book-flight-module-chrome"
+                sh "docker-compose up search-module-firefox book-flight-module-chrome"
             }
         }
 //         stage('Push Image') {
@@ -33,7 +33,7 @@ pipeline {
     post{
         always{
             archiveArtifacts artifacts: 'tests-results/**'
-            bat "docker-compose down"
+            sh "docker-compose down"
         }
     }
 }
