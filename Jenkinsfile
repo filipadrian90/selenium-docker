@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Jar') {
             steps {
-                sh "build.sh"
+                mvn "clean package -DskipTests"
             }
         }
         stage('Build Image') {
