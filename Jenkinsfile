@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Jar') {
             steps {
-                sudo sh "../selenium-docker/build.sh"
+                sh "mvn clean package -DskipTests"
             }
         }
         stage('Build Image') {
