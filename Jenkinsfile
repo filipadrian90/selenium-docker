@@ -3,13 +3,9 @@ pipeline {
     agent any
     stages {
         stage('Build Jar') {
-            agent {
-                any {
-                    image 'maven:3-alpine'
-                    args '-v $HOME/.m2:/root/.m2'
-                }
-            }
             steps {
+                image 'maven:3-alpine'
+                args '-v $HOME/.m2:/root/.m2'
                 sh "mvn clean package -DskipTests"
             }
         }
