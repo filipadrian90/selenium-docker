@@ -7,7 +7,7 @@ pipeline {
                 agent{
                     master{
                         image 'maven:3-alpine'
-                        args '-v /root/.m2:/root/.m2'
+                        args '-v $HOME/.m2:/root/.m2'
                     }
                 }
 
