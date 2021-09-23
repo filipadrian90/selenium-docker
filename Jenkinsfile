@@ -4,8 +4,6 @@ pipeline {
     stages {
         stage('Build Jar') {
             steps {
-                image 'maven:3-alpine'
-                args '-v $HOME/.m2:/root/.m2'
                 sh "mvn clean package -DskipTests"
             }
         }
