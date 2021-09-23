@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Jar') {
             agent {
-                docker {
+                master {
                     image 'maven:3-alpine'
                     args '-v $HOME/.m2:/root/.m2'
                 }
