@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Jar') {
             steps {
-                sh "../selenium-docker/build.sh"
+                sudo sh "../selenium-docker/build.sh"
             }
         }
         stage('Build Image') {
