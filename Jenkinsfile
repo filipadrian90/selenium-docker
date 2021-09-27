@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh "docker build -t=\"adrianfilip/selenium-docker\" ."
+                sh 'docker build -t="adrianfilip/selenium-docker" .'
             }
         }
         stage('Start Selenium Grid'){
