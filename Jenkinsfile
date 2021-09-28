@@ -1,10 +1,9 @@
 pipeline {
     // master executor should be set to 0
     agent any
-    tools{
-        maven 'Maven 3.6.3'
-        dockerTool 'Docker'
-    }
+//     tools{
+//         maven 'Maven 3.6.3'
+//             }
     stages {
         stage('Build Jar') {
             steps {
