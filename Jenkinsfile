@@ -1,6 +1,6 @@
 pipeline {
     // master executor should be set to 0
-    agent jenkins-agent
+    agent {jenkins-agent}
     tools{
         maven 'Maven 3.6.3'
         dockerTool 'Docker'
