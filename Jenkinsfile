@@ -11,6 +11,11 @@ pipeline {
                 sh "mvn clean package -DskipTests"
             }
         }
+        stage('Start Docker'){
+            steps{
+                sh "sudo systemctl start docker"
+            }
+        }
         stage('Build Image') {
             steps {
                 sh 'sudo docker build -t="adrianfilip/selenium-docker" .'
