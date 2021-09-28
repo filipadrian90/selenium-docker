@@ -1,17 +1,12 @@
 pipeline {
     // master executor should be set to 0
-    agent none
+    agent any
     tools{
         maven 'Maven 3.6.3'
         dockerTool 'Docker'
     }
     stages {
         stage('Build Jar') {
-            agent{
-                jenkins-agent{
-                    image 'adrianfilip/dockeragent'
-                    }
-                }
             steps {
                 sh "mvn clean package -DskipTests"
             }
