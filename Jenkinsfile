@@ -13,17 +13,17 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'docker build -t="adrianfilip/selenium-docker" .'
+                sh 'sudo docker build -t="adrianfilip/selenium-docker" .'
             }
         }
         stage('Start Selenium Grid'){
             steps{
-                sh "docker-compose up -d hub chrome firefox"
+                sh "sudo docker-compose up -d hub chrome firefox"
             }
         }
         stage('Run Test'){
             steps{
-                sh "docker-compose up search-module-firefox book-flight-module-chrome"
+                sh "sudo docker-compose up search-module-firefox book-flight-module-chrome"
             }
         }
 //         stage('Push Image') {
@@ -37,7 +37,7 @@ pipeline {
     post{
         always{
             archiveArtifacts artifacts: 'tests-results/**'
-            sh "docker-compose down"
+            sh "sudo docker-compose down"
         }
     }
 }
