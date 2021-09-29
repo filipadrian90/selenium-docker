@@ -12,17 +12,17 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'sudo docker build -t="adrianfilip/selenium-docker" .'
+                sh 'docker build -t="adrianfilip/selenium-docker" .'
             }
         }
         stage('Start Selenium Grid'){
             steps{
-                sh "sudo docker-compose up -d hub chrome firefox"
+                sh "docker-compose up -d hub chrome firefox"
             }
         }
         stage('Run Test'){
             steps{
-                sh "sudo docker-compose up search-module-firefox book-flight-module-chrome"
+                sh "docker-compose up search-module-firefox book-flight-module-chrome"
             }
         }
 //         stage('Push Image') {
