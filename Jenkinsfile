@@ -36,7 +36,7 @@ pipeline {
     post{
         always{
             archiveArtifacts artifacts: 'tests-results/**'
-            sh "sudo docker-compose down"
+            sh "docker-compose down"
         }
     }
 }
