@@ -22,7 +22,8 @@ pipeline {
         }
         stage('Run Test'){
             steps{
-                sh "docker-compose up search-module-firefox book-flight-module-chrome"
+                sh "docker compose up toolsQA"
+                //sh "docker-compose up search-module-firefox book-flight-module-chrome"
             }
         }
 //         stage('Push Image') {
