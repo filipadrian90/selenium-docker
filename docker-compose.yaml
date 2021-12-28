@@ -64,14 +64,14 @@ services:
 #      - MODULE=book-flight-module.xml
 #    volumes:
 #      - ./tests-results/book-result-firefox:/usr/share/udemy/test-output
-  toolsQA:
-    image: adrianfilip/selenium-docker
+    toolsQA:
+      image: adrianfilip/selenium-docker
       depends_on:
-       - chrome
-       - firefox
-    environment:
-       - BROWSER=chrome
-       - HUB_HOST=hub
-       - MODULE=toolsQA.xml
-    volumes:
-       - ./tests-results/toolsQA:/usr/share/udemy/test-output
+        - chrome
+        - firefox
+      environment:
+        - BROWSER=chrome
+        - HUB_HOST=hub
+        - MODULE=toolsQA.xml
+      volumes:
+        - ./tests-results/toolsQA:/usr/share/udemy/test-output
