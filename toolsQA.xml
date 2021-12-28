@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="toolsQA">
+    <test name="toolsQA homepage">
+        <classes>
+            <class name="com.toolsQA.pages.tests.ToolsQaHomepageTest"/>
+        </classes>
+    </test>
+
+</suite>
