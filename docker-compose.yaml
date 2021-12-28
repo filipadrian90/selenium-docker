@@ -20,17 +20,17 @@ services:
     environment:
       - HUB_HOST=hub
       - HUB_PORT=4444
-#  search-module-firefox:
-#    image: adrianfilip/selenium-docker
-#    depends_on:
-#      - chrome
-#      - firefox
-#    environment:
-#      - BROWSER=firefox
-#      - HUB_HOST=hub
-#      - MODULE=searchmodule.xml
-#    volumes:
-#      - ./tests-results/seach-result-firefox:/usr/share/udemy/test-output
+  search-module-firefox:
+    image: adrianfilip/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=firefox
+      - HUB_HOST=hub
+      - MODULE=searchmodule.xml
+    volumes:
+      - ./tests-results/seach-result-firefox:/usr/share/udemy/test-output
 #  search-module-chrome:
 #    image: adrianfilip/selenium-docker
 #    depends_on:
@@ -42,17 +42,17 @@ services:
 #      - MODULE=searchmodule.xml
 #    volumes:
 #      - ./tests-results/seach-result-chrome:/usr/share/udemy/test-output
-#  book-flight-module-chrome:
-#    image: adrianfilip/selenium-docker
-#    depends_on:
-#      - chrome
-#      - firefox
-#    environment:
-#      - BROWSER=chrome
-#      - HUB_HOST=hub
-#      - MODULE=book-flight-module.xml
-#    volumes:
-#      - ./tests-results/book-result-chrome:/usr/share/udemy/test-output
+  book-flight-module-chrome:
+    image: adrianfilip/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=book-flight-module.xml
+    volumes:
+      - ./tests-results/book-result-chrome:/usr/share/udemy/test-output
 #  book-flight-module-firefox:
 #    image: adrianfilip/selenium-docker
 #    depends_on:
