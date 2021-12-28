@@ -17,6 +17,7 @@ ADD target/libs                                 libs
 #ADD suites files
 ADD book-flight-module.xml                      book-flight-module.xml
 ADD searchmodule.xml                            searchmodule.xml
+ADD toolsQA.xml                                 toolsQA.xml
 
 #ADD health check script
 ADD healthcheck.sh                              healthcheck.sh
