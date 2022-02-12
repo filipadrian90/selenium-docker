@@ -17,6 +17,7 @@ pipeline {
         }
         stage('Start Selenium Grid'){
             steps{
+                sh "echo APP_PORT=4040 > .env"
                 sh "docker-compose up -d hub chrome firefox"
             }
         }
