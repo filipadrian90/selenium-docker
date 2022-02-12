@@ -5,7 +5,8 @@ pipeline {
 //         maven 'Maven 3.6.3'
 //             }
     parameters{
-        string(name: "APP_PORT", defaultValue: "4444", trim: false, description: "hub's port number")
+        string(name: "APP_PORT", defaultValue: "4444", trim: true, description: "hub's port number")
+        string(name: "TEST_SUITES", defaultValue: "toolsQA", trim: false, description: "tests to be executed")
     }
     stages {
         stage('Build Jar') {
@@ -26,7 +27,7 @@ pipeline {
         }
         stage('Run Test'){
             steps{
-                sh "docker-compose up toolsQA"
+                sh "docker-compose up $params.TEST_SUITES"
                 //sh "docker-compose up search-module-firefox book-flight-module-chrome"
             }
         }
