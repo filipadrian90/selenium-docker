@@ -4,6 +4,9 @@ pipeline {
 //     tools{
 //         maven 'Maven 3.6.3'
 //             }
+    parameters{
+        string(name: "APP_PORT", defaultValue: "4444", trim: false, description: "hub's port number")
+    }
     stages {
         stage('Build Jar') {
             steps {
